@@ -13,8 +13,13 @@ const Signup = () => {
     try {
       await axios.post('http://localhost:5000/api/auth/signup', { email, password, role });
       
-      alert('Signup successful');
-      navigate('/');
+      alert('Signup successful' + role);
+      if (role === 'student') {
+        navigate('/student/dashboard/');
+      } else if (role === 'teacher') {
+        navigate('/dashboard/');
+      }
+   
     } catch (err) {
       console.error(err);
       alert('Signup failed');
