@@ -1,0 +1,28 @@
+body {
+    background-color: #121212;
+    color: #ffffff;
+    font-family: Arial, sans-serif;
+  }
+  
+  button {
+    background-color: #1e1e1e;
+    color: #ffffff;
+    border: none;
+    padding: 10px 15px;
+    margin: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  button:hover {
+    background-color: #333333;
+  }
+  
+  .skeleton-loader {
+    background-color: #1e1e1e;
+    color: #555555;
+    padding: 10px;
+    border-radius: 5px;
+    margin: 5px 0;
+  }
+  
