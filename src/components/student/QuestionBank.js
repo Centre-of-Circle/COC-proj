@@ -22,7 +22,7 @@ const QuestionBank = () => {
   }, []);
 
   if (loading) {
-    return <div className="skeleton-loader">Loading questions...</div>;
+    return <div >Loading questions...</div>;
   }
 
   return (

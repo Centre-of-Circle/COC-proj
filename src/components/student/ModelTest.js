@@ -44,7 +44,7 @@ const ModelTest = () => {
   };
 
   if (questions.length === 0) {
-    return <div>Loading questions...</div>;
+    return <div>Loading modeltests...</div>;
   }
 
   return (

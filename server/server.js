@@ -61,7 +61,12 @@ app.post('/api/auth/signup', async (req, res) => {
   const user = new User({ email, password: hashedPassword, role });
   try {
     await user.save();
-    res.send('User registered!');
+    if(role=="student"){
+      res.send('/student/dashboard');
+
+    }else{
+      res.send('User registered!');
+    }
   } catch (err) {
     res.status(400).send(err);
   }
