@@ -9,12 +9,12 @@ app.use(express.json());
 app.use(cors());
 
 // MongoDB Connection
-mongoose.connect('mongodb://localhost:27017/mern_mcq_app', {
+mongoose.connect('mongodb+srv://coc:tt7Z8VIQrdBQ7FXX@cluster0.x1hzy.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
 
-// Models
+// Schemas and Models
 const UserSchema = new mongoose.Schema({
   email: { type: String, required: true, unique: true },
   password: { type: String, required: true },
@@ -106,6 +106,11 @@ app.post('/api/papers', authenticate, async (req, res) => {
   } catch (err) {
     res.status(400).send(err);
   }
+});
+
+app.get('/api/papers', authenticate, async (req, res) => {
+  const papers = await Paper.find({ teacherId: req.user._id }).populate('questions');
+  res.send(papers);
 });
 
 // Start Server
