@@ -1,13 +1,24 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import AddQuestion from './dashboard/AddQuestion';
 import CreatePaper from './dashboard/CreatePaper';
 import Home from './dashboard/Home';
 import Profile from './dashboard/Profile';
 import './Dashboard.css';
 import './dashboard/CreatePaper.css';
-import './AddQuestion.css'
+import './AddQuestion.css';
+
 const Dashboard = () => {
   const [activeTab, setActiveTab] = useState('home');
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const token = localStorage.getItem('authToken');
+    if (!token) {
+      alert('You must be logged in to access the dashboard.');
+      navigate('/'); // Redirect to login page
+    }
+  }, [navigate]);
 
   return (
     <div className="dashboard-container">
